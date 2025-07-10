@@ -26,3 +26,7 @@ Thumbs.db
 
 # Ignore backend environment files if present
 ../backend/.env
+
+# ignore jwt
+jwt.js
+.jwt.js
