@@ -4,7 +4,8 @@ import User from '../db.js';
 // using  username create jwt
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { jwtSecret } from '../jwt.js'; // Import the JWT secret from jwt.js
+import { jwtSecret } from '../jwt.js';
+
 const router = express.Router();
 
 router.post('/login', async (req, res) => {
@@ -20,9 +21,11 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Invalid email or password' });
         }
         // Create JWT token with email
-        const token = jwt.sign({ email: user.email },jwtSecret, { expiresIn: '1h' });
+        const token = jwt.sign({ email }, jwtSecret, { expiresIn: '1h' }); // Token expires in 1 hour
         console.log('JWT Token:', token);
         res.status(200).json({ message: 'User logged in successfully', user, token });
+        
+
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -30,5 +33,7 @@ router.post('/login', async (req, res) => {
 });
 
 export default router;
+
+
 
 

@@ -1,4 +1,5 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect  } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 
@@ -11,7 +12,7 @@ export function PayByMeLogin({ setLoading }) {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const isMounted = useRef(true);
-
+   const navigate = useNavigate();
   useEffect(() => {
     isMounted.current = true;
     return () => { isMounted.current = false; };
@@ -26,11 +27,13 @@ export function PayByMeLogin({ setLoading }) {
     setError("");
   }, []);
 
+  
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     setIsLoading(true);
     if (setLoading) setLoading(true);
     setError("");
+
     fetch("http://localhost:3000/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -40,7 +43,6 @@ export function PayByMeLogin({ setLoading }) {
         let data;
         try {
           data = await res.json();
-          console.log(data);
         } catch (err) {
           throw new Error("Server returned invalid response. Please try again later.");
         }
@@ -50,11 +52,16 @@ export function PayByMeLogin({ setLoading }) {
         if (!isMounted.current) return;
         setIsLoading(false);
         if (setLoading) setLoading(false);
+
         if (data.error || data.status === 'error') {
           setError(data.error || data.message || "Login failed. Please try again.");
         } else {
+          localStorage.setItem("token", data.token);
           setError("");
           alert(data.message || "Login successful!");
+         
+
+          navigate("/dashboard"); 
         }
       })
       .catch(err => {
@@ -63,8 +70,7 @@ export function PayByMeLogin({ setLoading }) {
         if (setLoading) setLoading(false);
         setError("Login error: " + (err.message || "Unknown error"));
       });
-  }, [formData, setLoading]);
-  console.log(formData);
+  }, [formData, setLoading, navigate]);
 
   return (
     <div

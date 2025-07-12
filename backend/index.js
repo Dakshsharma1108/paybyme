@@ -5,12 +5,15 @@ import CORS from 'cors';
 import signupRouter from './routes/signup.js';
 import loginRouter from './routes/login.js';
 
+
+
 const app = express();
 app.use(express.json());
 app.use(CORS());
 
 app.use('/', signupRouter);
 app.use('/', loginRouter);
+
 
 
 app.get('/users', async (req, res) => {
