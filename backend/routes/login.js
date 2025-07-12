@@ -21,9 +21,9 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Invalid email or password' });
         }
         // Create JWT token with email
-        const token = jwt.sign({ email }, jwtSecret, { expiresIn: '1h' }); // Token expires in 1 hour
+        const token = jwt.sign({ email, id: user.id }, jwtSecret, { expiresIn: '1h' }); // Token expires in 1 hour
         console.log('JWT Token:', token);
-        res.status(200).json({ message: 'User logged in successfully', user, token });
+        res.status(200).json({ message: 'User logged in successfully', user, token , id: user.id});
         
 
     } catch (error) {
