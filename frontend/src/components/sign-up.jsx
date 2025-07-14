@@ -34,7 +34,7 @@ export function PayByMeSignup({ setLoading }) {
     setError("");
     // Exclude confirmPassword from payload
     const { confirmPassword, ...payload } = formData;
-    fetch("http://localhost:3000/signup", {
+    fetch("http://localhost:3000/api/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
