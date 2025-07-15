@@ -1,4 +1,3 @@
-import './App.css';
 import { PayByMeSignup } from './components/sign-up.jsx';
 import { PayByMeLogin } from './components/login.jsx';
 import { PayByMeHome } from './components/home.jsx';
@@ -6,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { useState } from 'react';
 import { ProtectedRoute } from './components/ProtectedRoute.jsx';
 import { PayByMeDashboard } from './components/dashboard.jsx';
+
 
 function LoadingScreen() {
   return (

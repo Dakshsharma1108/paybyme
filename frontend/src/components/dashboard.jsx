@@ -1,24 +1,62 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function PayByMeDashboard() {
   const [search, setSearch] = useState('');
-  const [menuOpen, setMenuOpen] = useState(false); // NEW state for menu
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [users, setUsers] = useState([]);
 
-  const users = [
-    { id: 'U1', name: 'User 1' },
-    { id: 'U2', name: 'User 2' },
-    { id: 'U3', name: 'User 3' },
-  ];
+  useEffect(() => {
+    fetch("http://localhost:3000/api/users", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        const formattedUsers = data.map(user => ({
+          id: user.id,
+          name: user.email.split('@')[0], // username from email
+        }));
+        setUsers(formattedUsers);
+      })
+      .catch(error => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
 
   const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(search.toLowerCase())
   );
-
+  if (users.length === 0) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-white p-6 flex items-center justify-center">
+        <div className="text-gray-500">Loading users...</div>
+      </div>
+    );
+  }
+  if (users.length === 0 && search) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-white p-6 flex items-center justify-center">
+        <div className="text-gray-500">No users found.</div>
+      </div>
+    );
+  }
+  if (users.length === 0 && !search) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-white p-6 flex items-center justify-center">
+        <div className="text-gray-500">No users available.</div>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-white p-6">
-      {/* Top Nav */}
       <div className="flex justify-between items-center border-b pb-4 mb-6 relative">
-        {/* Toggle Button + Menu */}
         <div className="relative">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -29,15 +67,16 @@ export function PayByMeDashboard() {
           {menuOpen && (
             <div className="absolute left-0 mt-2 w-32 bg-white border rounded-lg shadow-lg z-10">
               <button className="w-full text-left px-4 py-2 hover:bg-indigo-100 text-gray-700">Profile</button>
-              <button className="w-full text-left px-4 py-2 hover:bg-indigo-100 text-red-500">Logout</button>
+            {/* remove token and refresh */}
+              <button onClick={() => localStorage.removeItem('token') && window.location.reload()
+              
+              } className="w-full text-left px-4 py-2 hover:bg-indigo-100 text-red-500">Logout</button>
             </div>
           )}
         </div>
 
-        {/* Heading */}
         <h1 className="text-xl font-semibold text-gray-900">Payments App</h1>
 
-        {/* Avatar */}
         <div className="flex items-center space-x-2">
           <span className="text-gray-700">Hello, User</span>
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 text-white font-bold flex items-center justify-center">
@@ -46,12 +85,10 @@ export function PayByMeDashboard() {
         </div>
       </div>
 
-      {/* Balance Display */}
       <div className="text-lg font-medium text-gray-800 mb-4">
         Your Balance <span className="font-bold text-indigo-600">$5000</span>
       </div>
 
-      {/* Search Input */}
       <div className="mb-4">
         <input
           type="text"
@@ -62,7 +99,6 @@ export function PayByMeDashboard() {
         />
       </div>
 
-      {/* User List */}
       <div className="space-y-4">
         {filteredUsers.length === 0 ? (
           <p className="text-gray-500 text-center">No users found.</p>
@@ -74,7 +110,7 @@ export function PayByMeDashboard() {
             >
               <div className="flex items-center space-x-4">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 text-white font-bold flex items-center justify-center">
-                  {user.name.split(' ').map(n => n[0]).join('').toUpperCase()}
+                  {user.name[0].toUpperCase()}
                 </div>
                 <span className="text-gray-800 font-medium">{user.name}</span>
               </div>
