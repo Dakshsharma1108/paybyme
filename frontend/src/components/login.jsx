@@ -57,7 +57,7 @@ export function PayByMeLogin({ setLoading }) {
         if (data.error || data.status === 'error') {
           setError(data.error || data.message || "Login failed. Please try again.");
         } else {
-          localStorage.setItem("token", data.token);
+          localStorage.setItem("token", data.finaltoken);
           setError("");
           alert(data.message || "Login successful!");
          
@@ -272,9 +272,18 @@ export function PayByMeLogin({ setLoading }) {
             Secure payments at your fingertips
           </p>
           {error && (
-            <div className="mt-4 mb-2 p-3 bg-red-100 text-red-700 rounded animate-fade-in text-center font-medium">
-              {error}
-            </div>
+  <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/10">
+    <div className="bg-white rounded-xl shadow-xl p-6 max-w-sm w-full text-center animate-fade-in-special">
+      <h2 className="text-lg font-semibold text-red-600 mb-2">Something went wrong</h2>
+      <p className="text-gray-700 mb-4">{error}</p>
+      <button
+        onClick={() => setError("")}
+        className="mt-4 inline-flex justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      >
+        OK
+      </button>
+    </div>
+  </div>
           )}
         </div>
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">

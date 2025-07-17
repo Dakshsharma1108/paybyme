@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function PayByMeDashboard() {
   const [search, setSearch] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
+  function logout(){
+    localStorage.removeItem('token');
+    navigate('/login')
+  }
 
   useEffect(() => {
     fetch("http://localhost:3000/api/users", {
@@ -68,9 +74,7 @@ export function PayByMeDashboard() {
             <div className="absolute left-0 mt-2 w-32 bg-white border rounded-lg shadow-lg z-10">
               <button className="w-full text-left px-4 py-2 hover:bg-indigo-100 text-gray-700">Profile</button>
             {/* remove token and refresh */}
-              <button onClick={() => localStorage.removeItem('token') && window.location.reload()
-              
-              } className="w-full text-left px-4 py-2 hover:bg-indigo-100 text-red-500">Logout</button>
+              <button onClick={logout} className="w-full text-left px-4 py-2 hover:bg-indigo-100 text-red-500">Logout</button>
             </div>
           )}
         </div>

@@ -186,3 +186,30 @@ html, body, #root, .min-h-screen, .h-screen, .max-h-screen {
 body, #root {
   overflow: hidden !important;
 }
+
+/* signup.css */
+.error-box {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: rgba(255, 0, 0, 0.1);
+    color: #b91c1c;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 500;
+}
+@keyframes fade-in-special {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-special {
+  animation: fade-in-special 0.3s ease-out forwards;
+}
+

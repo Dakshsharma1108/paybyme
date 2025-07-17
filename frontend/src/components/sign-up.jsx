@@ -100,32 +100,32 @@ export function PayByMeSignup({ setLoading }) {
             {/* Animated SVG with a lively, premium, financial theme */}
             <svg className="w-32 h-32 animate-spin-slow opacity-90" viewBox="0 0 128 128" fill="none">
               {/* Glowing coin */}
-              <circle cx="64" cy="64" r="38" fill="url(#coinGradient)" stroke="#fff" strokeWidth="4" filter="url(#coinGlow)"/>
-              <circle cx="64" cy="64" r="28" fill="#fff" opacity="0.7"/>
+              <circle cx="64" cy="64" r="38" fill="url(#coinGradient)" stroke="#fff" strokeWidth="4" filter="url(#coinGlow)" />
+              <circle cx="64" cy="64" r="28" fill="#fff" opacity="0.7" />
               {/* Card */}
-              <rect x="44" y="38" width="40" height="28" rx="6" fill="url(#cardGradient)" stroke="#a5b4fc" strokeWidth="2" className="animate-float"/>
+              <rect x="44" y="38" width="40" height="28" rx="6" fill="url(#cardGradient)" stroke="#a5b4fc" strokeWidth="2" className="animate-float" />
               {/* Sparkle */}
-              <circle cx="90" cy="50" r="3" fill="#fff" opacity="0.8" className="animate-sparkle-burst"/>
+              <circle cx="90" cy="50" r="3" fill="#fff" opacity="0.8" className="animate-sparkle-burst" />
               {/* Dollar sign */}
               <text x="64" y="56" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#a78bfa" opacity="0.9" fontFamily="Arial">$</text>
               {/* Arrows for movement */}
-              <path d="M64 80 l0 16" stroke="#f472b6" strokeWidth="3" strokeLinecap="round" className="animate-float"/>
-              <path d="M64 96 l-6 -6" stroke="#f472b6" strokeWidth="3" strokeLinecap="round"/>
-              <path d="M64 96 l6 -6" stroke="#f472b6" strokeWidth="3" strokeLinecap="round"/>
+              <path d="M64 80 l0 16" stroke="#f472b6" strokeWidth="3" strokeLinecap="round" className="animate-float" />
+              <path d="M64 96 l-6 -6" stroke="#f472b6" strokeWidth="3" strokeLinecap="round" />
+              <path d="M64 96 l6 -6" stroke="#f472b6" strokeWidth="3" strokeLinecap="round" />
               <defs>
                 <radialGradient id="coinGradient" cx="0" cy="0" r="1" gradientTransform="translate(64 64) scale(38)" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#fffbe7"/>
-                  <stop offset="1" stopColor="#f472b6"/>
+                  <stop stopColor="#fffbe7" />
+                  <stop offset="1" stopColor="#f472b6" />
                 </radialGradient>
                 <linearGradient id="cardGradient" x1="44" y1="38" x2="84" y2="66" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#a5b4fc"/>
-                  <stop offset="1" stopColor="#f472b6"/>
+                  <stop stopColor="#a5b4fc" />
+                  <stop offset="1" stopColor="#f472b6" />
                 </linearGradient>
                 <filter id="coinGlow" x="0" y="0" width="128" height="128" filterUnits="userSpaceOnUse">
-                  <feGaussianBlur stdDeviation="6" result="blur"/>
+                  <feGaussianBlur stdDeviation="6" result="blur" />
                   <feMerge>
-                    <feMergeNode in="blur"/>
-                    <feMergeNode in="SourceGraphic"/>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
               </defs>
@@ -212,28 +212,28 @@ export function PayByMeSignup({ setLoading }) {
           </div>
           {/* Floating geometric shapes */}
           <div className="absolute left-1/3 top-2/3 w-8 h-8 opacity-30 animate-geo-float1">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="6" fill="url(#geo1)"/></svg>
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="6" fill="url(#geo1)" /></svg>
           </div>
           <div className="absolute left-2/3 top-1/4 w-10 h-10 opacity-25 animate-geo-float2">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><polygon points="20,4 36,36 4,36" fill="url(#geo2)"/></svg>
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><polygon points="20,4 36,36 4,36" fill="url(#geo2)" /></svg>
           </div>
           <div className="absolute left-1/2 top-1/5 w-7 h-7 opacity-20 animate-geo-float3">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="url(#geo3)" strokeWidth="3" fill="none"/></svg>
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="url(#geo3)" strokeWidth="3" fill="none" /></svg>
           </div>
           {/* SVG gradients for geometric shapes */}
           <svg width="0" height="0">
             <defs>
               <linearGradient id="geo1" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#a5b4fc"/>
-                <stop offset="1" stopColor="#f472b6"/>
+                <stop stopColor="#a5b4fc" />
+                <stop offset="1" stopColor="#f472b6" />
               </linearGradient>
               <linearGradient id="geo2" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#f472b6"/>
-                <stop offset="1" stopColor="#c4b5fd"/>
+                <stop stopColor="#f472b6" />
+                <stop offset="1" stopColor="#c4b5fd" />
               </linearGradient>
               <linearGradient id="geo3" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#a5b4fc"/>
-                <stop offset="1" stopColor="#c4b5fd"/>
+                <stop stopColor="#a5b4fc" />
+                <stop offset="1" stopColor="#c4b5fd" />
               </linearGradient>
             </defs>
           </svg>
@@ -268,8 +268,17 @@ export function PayByMeSignup({ setLoading }) {
             Secure payments at your fingertips
           </p>
           {error && (
-            <div className="mt-4 mb-2 p-3 bg-red-100 text-red-700 rounded animate-fade-in text-center font-medium">
-              {error}
+            <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/10">
+              <div className="bg-white rounded-xl shadow-xl p-6 max-w-sm w-full text-center animate-fade-in-special">
+                <h2 className="text-lg font-semibold text-red-600 mb-2">Something went wrong</h2>
+                <p className="text-gray-700 mb-4">{error}</p>
+                <button
+                  onClick={() => setError("")}
+                  className="mt-4 inline-flex justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                >
+                  OK
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -281,11 +290,11 @@ export function PayByMeSignup({ setLoading }) {
             {/* Avatar/illustration above form */}
             <div className="flex justify-center mb-6 z-10 relative">
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 flex items-center justify-center shadow-lg animate-avatar-pop">
-                <svg className="w-10 h-10 text-white/90" fill="none" viewBox="0 0 40 40"><circle cx="20" cy="14" r="7" fill="white" fillOpacity=".7"/><ellipse cx="20" cy="29" rx="11" ry="7" fill="white" fillOpacity=".5"/></svg>
+                <svg className="w-10 h-10 text-white/90" fill="none" viewBox="0 0 40 40"><circle cx="20" cy="14" r="7" fill="white" fillOpacity=".7" /><ellipse cx="20" cy="29" rx="11" ry="7" fill="white" fillOpacity=".5" /></svg>
               </div>
             </div>
             <form className="space-y-6" onSubmit={handleSubmit}>
-              
+
 
 
 
@@ -367,14 +376,14 @@ export function PayByMeSignup({ setLoading }) {
                     {showConfirmPassword ? (
                       // Eye Open (Material Design)
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M1 12C2.73 7.61 7.11 4.5 12 4.5c4.89 0 9.27 3.11 11 7.5-1.73 4.39-6.11 7.5-11 7.5-4.89 0-9.27-3.11-11-7.5z" stroke="currentColor" strokeWidth="2" fill="none"/>
-                        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" fill="none"/>
+                        <path d="M1 12C2.73 7.61 7.11 4.5 12 4.5c4.89 0 9.27 3.11 11 7.5-1.73 4.39-6.11 7.5-11 7.5-4.89 0-9.27-3.11-11-7.5z" stroke="currentColor" strokeWidth="2" fill="none" />
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" fill="none" />
                       </svg>
                     ) : (
                       // Eye Off (Material Design)
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M17.94 17.94C16.13 19.24 14.13 20 12 20c-4.89 0-9.27-3.11-11-7.5a12.35 12.35 0 0 1 5.06-5.94M9.53 9.53A3 3 0 0 1 12 9c1.66 0 3 1.34 3 3 0 .47-.11.91-.29 1.3M1 1l22 22" stroke="currentColor" strokeWidth="2" fill="none"/>
-                        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" fill="none"/>
+                        <path d="M17.94 17.94C16.13 19.24 14.13 20 12 20c-4.89 0-9.27-3.11-11-7.5a12.35 12.35 0 0 1 5.06-5.94M9.53 9.53A3 3 0 0 1 12 9c1.66 0 3 1.34 3 3 0 .47-.11.91-.29 1.3M1 1l22 22" stroke="currentColor" strokeWidth="2" fill="none" />
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" fill="none" />
                       </svg>
                     )}
                   </button>
@@ -390,7 +399,7 @@ export function PayByMeSignup({ setLoading }) {
                              text-white shadow-sm transition-colors hover:bg-indigo-500
                              focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 >
-                  Sign in
+                  Sign up
                 </button>
               </div>
             </form>
@@ -407,3 +416,4 @@ export function PayByMeSignup({ setLoading }) {
     </div>
   );
 }
+
