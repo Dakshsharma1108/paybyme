@@ -4,7 +4,7 @@ import User from './db.js';
 import CORS from 'cors';
 import signupRouter from './routes/signup.js';
 import loginRouter from './routes/login.js';
-import verifyRouter from './routes/verify.js'; // Import the verify router
+import dashboardRouter from './routes/dashboard.js'; // Import the dashboard router
 
 
 const app = express();
@@ -13,7 +13,8 @@ app.use(CORS());
 
 app.use('/api' ,signupRouter);
 app.use('/api', loginRouter);
-app.use('/api', verifyRouter); // Use the verify router
+app.use('/api', dashboardRouter); // Use the verify router
+// app.use('/api', dashboardRouter); // Use the dashboard router
 
 
 

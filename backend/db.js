@@ -27,6 +27,9 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     default: "" // You can check for this in the dashboard
+  },
+  balance: {
+    type: Number
   }
 }, {
   timestamps: true

@@ -26,7 +26,8 @@ router.post('/signup', async (req, res) => {
       id: 'user-' + uuidv4(), // More robust than global variable
       email,
       password: hashedPassword,
-      username: "" // Empty at signup; filled later in dashboard
+      username: "", // Empty at signup; filled later in dashboard
+      balance: 5000 // Default balance can be set here
     });
 
     await newUser.save();

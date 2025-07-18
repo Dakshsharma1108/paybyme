@@ -57,7 +57,7 @@ export function PayByMeLogin({ setLoading }) {
         if (data.error || data.status === 'error') {
           setError(data.error || data.message || "Login failed. Please try again.");
         } else {
-          localStorage.setItem("token", data.finaltoken);
+          localStorage.setItem("token",data.token);
           setError("");
           alert(data.message || "Login successful!");
          
