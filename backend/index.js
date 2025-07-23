@@ -4,7 +4,8 @@ import User from './db.js';
 import CORS from 'cors';
 import signupRouter from './routes/signup.js';
 import loginRouter from './routes/login.js';
-import dashboardRouter from './routes/dashboard.js'; // Import the dashboard router
+import dashboardRouter from './routes/dashboard.js'; // Import the dashboard 
+
 
 
 const app = express();
@@ -18,14 +19,7 @@ app.use('/api', dashboardRouter); // Use the verify router
 
 
 
-app.get('/api/users', async (req, res) => {
-    try {
-        const users = await User.find();
-        res.status(200).json(users);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-})
+
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');

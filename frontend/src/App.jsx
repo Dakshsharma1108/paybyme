@@ -1,4 +1,4 @@
-import { PayByMeSignup } from './components/sign-up.jsx';
+import { PayByMeSignUp } from './components/sign-up.jsx';
 import { PayByMeLogin } from './components/login.jsx';
 import { PayByMeHome } from './components/home.jsx';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
@@ -24,7 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PayByMeHome />} />
         <Route path="/login" element={<PayByMeLogin setLoading={setLoading} />} />
-        <Route path="/signup" element={<PayByMeSignup setLoading={setLoading} />} />
+        <Route path="/signup" element={<PayByMeSignUp setLoading={setLoading} />} />
         <Route
           path="/dashboard"
           element={

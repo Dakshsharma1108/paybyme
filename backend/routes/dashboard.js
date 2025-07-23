@@ -36,9 +36,9 @@ router.post('/set-username', verifyToken, async (req, res) => {
             return res.status(400).json({ error: 'User ID not found in token' });
         }
         // check if username already exists
-        const existingUser = await User.findOne({ username: username });
+        const existingUser = await User.findOne({ username: username, id: { $ne: userId } });
         if (existingUser) {
-            return res.status(400).json({ error: 'Username already exists' });
+        return res.status(400).json({ error: 'Username already exists' });
         }
         const user = await User.findOneAndUpdate(
             { id: userId },
@@ -75,6 +75,16 @@ router.post('/details', verifyToken, async (req, res) => {
         res.status(500).json({ error: 'Database error', details: e.message });
     }
 });
+
+router.get('/users', verifyToken, async (req, res) => {
+    try {
+        // Find all users except the current user, return only username and id
+        const users = await User.find({ id: { $ne: req.userId } }, { username: 1, id: 1, _id: 0 });
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
 
 
 
